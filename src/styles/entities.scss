@@ -75,6 +75,7 @@
     grid-column-gap: 20px;
     grid-row-gap: 30px;
     justify-items: center;
+    padding: 40px;
 
     .card {
         background-color: white;
@@ -111,12 +112,56 @@
     }
 }
 
-/* Media query for mobile (e.g., 480px width and below) */
 @media (max-width: 768px) {
     .cards-wrapper {
         grid-template-columns: repeat(1, 1fr);
         .card {
 
         }
+    }
+}
+
+
+.loader-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    .loader {
+        width: 48px;
+        height: 48px;
+        border: 3px solid #FFF;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+    }
+    .loader::after {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: 3px solid;
+        border-color: #FF3D00 transparent;
+    }
+}
+
+.loader-wrapper__hidden {
+    display: none;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

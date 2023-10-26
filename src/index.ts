@@ -41,27 +41,34 @@ dateSubmitButton.addEventListener('click', async (e) => {
     dateInput1.classList.remove('input-error')
 
     const cardParent = document.getElementsByClassName('cards-wrapper')[0] as HTMLDivElement;
+    const loader = document.getElementsByClassName('loader-wrapper')[0];
+    loader.classList.remove('loader-wrapper__hidden');
+    cardParent.innerHTML = ''
     const persons = await fetchPersons(formatDate(dateInput0.value), formatDate(dateInput1.value))
+
 
     if (!persons.data.length) {
         cardParent.innerHTML = ''
         return;
     };
 
-
-    persons.data.forEach((person) => {
-        const elem = `
+    // I ONLY NEED THIS TIMEOUT TO SHOW THE DELAY, I know its anti pattern ;)
+    setTimeout(() => {
+        persons.data.forEach((person) => {
+            const elem = `
             <div class="card">
                 <p class="card-subheading">${person.firstname} ${person.lastname}</p>
-                <p class="card-text"><img src=${MailIcon} style="margin-right: 5px;" />${person.email}</p>
-                <p class="card-text"><img src=${PhoneIcon} style="margin-right: 5px;" />${person.phone}</p>
-                <p class="card-text"><img src=${BirthDayIcon} style="margin-right: 7px;" />${person.birthday}</p>
-                <p class="card-text"><img src=${SexIcon} style="margin-right: 13px;" />${person.gender}</p>
-                <p class="card-text"><img src=${WebsiteIcon} style="margin-right: 5px;" />${person.website}</p>
+                <p class="card-text"><img src=${MailIcon} style="margin-right: 5px;" alt="img" />${person.email}</p>
+                <p class="card-text"><img src=${PhoneIcon} style="margin-right: 5px;" alt="img" />${person.phone}</p>
+                <p class="card-text"><img src=${BirthDayIcon} style="margin-right: 7px;" alt="img" />${person.birthday}</p>
+                <p class="card-text"><img src=${SexIcon} style="margin-right: 13px;" alt="img" />${person.gender}</p>
+                <p class="card-text"><img src=${WebsiteIcon} style="margin-right: 5px;" alt="img" />${person.website}</p>
             </div>
         `;
-        cardParent.insertAdjacentHTML('beforeend', elem);
-    })
+            loader.classList.add('loader-wrapper__hidden');
+            cardParent.insertAdjacentHTML('beforeend', elem);
+        })
+    }, 2000)
 })
 
 dateInput0.addEventListener('', (e) => {
