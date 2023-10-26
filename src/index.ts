@@ -52,7 +52,7 @@ dateSubmitButton.addEventListener('click', async (e) => {
     persons.data.forEach((person) => {
         const elem = `
             <div class="card">
-                <p class="card-subheading">Wade Warren</p>
+                <p class="card-subheading">${person.firstname} ${person.lastname}</p>
                 <p class="card-text"><img src=${MailIcon} style="margin-right: 5px;" />${person.email}</p>
                 <p class="card-text"><img src=${PhoneIcon} style="margin-right: 5px;" />${person.phone}</p>
                 <p class="card-text"><img src=${BirthDayIcon} style="margin-right: 7px;" />${person.birthday}</p>
