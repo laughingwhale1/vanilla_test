@@ -70,11 +70,3 @@ dateSubmitButton.addEventListener('click', async (e) => {
         })
     }, 2000)
 })
-
-dateInput0.addEventListener('', (e) => {
-
-})
-
-dateInput1.addEventListener('', (e) => {
-
-})
