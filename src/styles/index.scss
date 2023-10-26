@@ -1,0 +1,8 @@
+@import "normalize";
+@import "entities";
+@import "variables";
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--main-bg-color);
+}
