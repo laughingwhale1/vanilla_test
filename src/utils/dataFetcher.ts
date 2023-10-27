@@ -35,6 +35,11 @@ interface BaseResponse {
 }
 
 export const fetchPersons = async (dateFrom: string, dateTo: string): Promise<BaseResponse> => {
-    const response= await fetch(`https://fakerapi.it/api/v1/persons?_birthday_start=${dateFrom}&_birthday_end=${dateTo}`);
-    return await response.json();
+    try {
+        const response= await fetch(`https://fakerapi.it/api/v1/persons?_birthday_start=${dateFrom}&_birthday_end=${dateTo}`);
+        return await response.json();
+    } catch (e) {
+        alert(`error hapenned ${e}`)
+        console.log(e)
+    }
 }

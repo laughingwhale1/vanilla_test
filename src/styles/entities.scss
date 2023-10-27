@@ -165,3 +165,16 @@
         transform: rotate(360deg);
     }
 }
+
+.nothing-found {
+    display: flex;
+    justify-content: center;
+    p {
+        font-size: 22px;
+        font-weight: 700;
+    }
+}
+
+.nothing-found__hidden {
+    display: none;
+}

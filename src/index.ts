@@ -42,13 +42,16 @@ dateSubmitButton.addEventListener('click', async (e) => {
 
     const cardParent = document.getElementsByClassName('cards-wrapper')[0] as HTMLDivElement;
     const loader = document.getElementsByClassName('loader-wrapper')[0];
+    const nothingFoundText = document.getElementsByClassName('nothing-found')[0] as HTMLDivElement;
     loader.classList.remove('loader-wrapper__hidden');
+    nothingFoundText.classList.add('nothing-found__hidden')
     cardParent.innerHTML = ''
     const persons = await fetchPersons(formatDate(dateInput0.value), formatDate(dateInput1.value))
 
-
-    if (!persons.data.length) {
+    if (!persons && !persons?.data.length) {
         cardParent.innerHTML = ''
+        loader.classList.add('loader-wrapper__hidden');
+        nothingFoundText.classList.remove('nothing-found__hidden')
         return;
     };
 
@@ -66,6 +69,7 @@ dateSubmitButton.addEventListener('click', async (e) => {
             </div>
         `;
             loader.classList.add('loader-wrapper__hidden');
+            nothingFoundText.classList.add('nothing-found__hidden')
             cardParent.insertAdjacentHTML('beforeend', elem);
         })
     }, 2000)
